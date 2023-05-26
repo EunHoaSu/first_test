@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+/th/main
+
+<!-- th:text="|Hi ${user.name}!|"
+(= th:text="'Hi '+${user.name}+'!'" -->
+
+th:text="${test}"
+<br/>
+<input type="text" th:text="|Hi ${test}!|"/>
+<br/>
+<th:block th:each="testVO :${testList}">
+	<input name="title" th:text="${testVO.title}" th:value="${testVO.contents}">
+	<br/>
+</th:block>
+
+ <button type="button" th:onclick="click_test(${test})" th:text="|클릭테스트 ${test}|"></button>
+ <button type="button" th:myName="|두번쨰 : ${test}|" th:onclick="click_test(this.getAttribute('myName'))" th:text="|클릭테스트 ${test}|"></button>
+
+
+</body>
+
+<script th:inline="javascript">
+
+    function click_test(name) {
+        console.log(name);
+        alert(name);
+    }
+
+</script>
+
+</html>
